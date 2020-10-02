@@ -54,4 +54,5 @@ app.get('/login', (req, res) => {
         res.status(401);
 });
 
-app.listen(3400, e => console.log('lisning...'));
+const PORT = process.env.PORT || 50001;
+app.listen(PORT, e => console.log(`Server started in http://localhost:${PORT}`));
