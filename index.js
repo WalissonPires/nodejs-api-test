@@ -15,8 +15,12 @@ const validateToken = (req, res, next) => {
 
     let tokenError = '';
     try {
-        const tokenPayload = token && jwt.verify(token, jwtSecretKey);
-        console.log('token payload', { tokenPayload });
+        if (token === '')
+            tokenError = 'Token is required';
+        else {
+            const tokenPayload = token && jwt.verify(token, jwtSecretKey);
+            console.log('token payload', { tokenPayload });
+        }
     }
     catch(error) {
         tokenError = error.message;
